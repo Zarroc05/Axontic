@@ -1,8 +1,9 @@
 {
   "botConfig": [
     {
-      "token": "ENTER TOKEN HERE!",
-      "prefix": "-"
+      "token": "ENTER DISCORD TOKEN HERE",
+      "prefix": "-",
+      "dagpiapi": "ENTER API TOKEN HERE"
     }
   ]
 }

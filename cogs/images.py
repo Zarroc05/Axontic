@@ -1,13 +1,20 @@
+import json
+
 import discord
 from asyncdagpi import Client, ImageFeatures
-from discord.ext import commands
+from nextcord.ext import commands
 
-dagpi = Client("MTY0NDE1MTU5NA.Ffd6fcbNrVS4rdd6ZQmjrFeEBf6bfiIK.91ca3aec3503361f")
+with open('./config.json') as f:
+    data = json.load(f)
+    for c in data['botConfig']:
+        api = c['dagpiapi']
+dagpi = Client(api)
+
 ecolor = discord.Color.dark_red()
 
 
-class Bilder(commands.Cog):
-    """Ärgere deine Freunde mit witzigen Bildern!"""
+class Images(commands.Cog):
+    """Annoy your friends with funny pictures!"""
 
     def __init__(self, client):
         self.client = client
@@ -16,7 +23,7 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def pixel(self, ctx, member: discord.Member = None):
-        """Erlaubt es dir, ein Mitglied zu verpixeln!"""
+        """Allows you to pixelate a member!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
@@ -32,7 +39,7 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def colors(self, ctx, member: discord.Member = None):
-        """Ermöglicht es dir, ein Mitglied mit den im Bild vorhandenen Farben zu bekommen!"""
+        """Allows you to get a member with the colors present in the image!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
@@ -48,7 +55,7 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def triggered(self, ctx, member: discord.Member = None):
-        """Ermöglicht es dir, ein getriggertes Gif zu bekommen!"""
+        """Allows you to get a triggered gif!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
@@ -64,7 +71,7 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def wasted(self, ctx, member: discord.Member = None):
-        """Ermöglicht es dir, ein Mitglied mit GTA V Wasted Screen zu bekommen!"""
+        """Allows you to get a member with GTA V Wasted Screen!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
@@ -96,7 +103,7 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def petpet(self, ctx, member: discord.Member = None):
-        """Streichel ein Mitglied!"""
+        """Pet a member!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
@@ -112,7 +119,7 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def bonk(self, ctx, member: discord.Member = None):
-        """Haue ein Mitglied mit einem Hammer!"""
+        """Hit a member with a hammer!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
@@ -144,7 +151,7 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def blur(self, ctx, member: discord.Member = None):
-        """Verwischt ein bestimmtes Mitglied!"""
+        """Blur a specific member!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
@@ -160,7 +167,7 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def delete(self, ctx, member: discord.Member = None):
-        """Erzeugt ein Windows-Lösch-Meme basierend auf einem bestimmten Mitglied!"""
+        """Creates a Windows delete meme based on a specific member!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
@@ -176,7 +183,7 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def lego(self, ctx, member: discord.Member = None):
-        """Jede Gruppe von Pixeln ist ein Legostein!"""
+        """Each group of pixels is a Lego brick!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
@@ -192,7 +199,7 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def wanted(self, ctx, member: discord.Member = None):
-        """Fahndungsplakat eines Mitglieds!"""
+        """Wanted poster of a member!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
@@ -208,7 +215,7 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def mosaic(self, ctx, member: discord.Member = None):
-        """Verwandle ein Mitglied in ein römisches Mosaik!"""
+        """Turn a member into a Roman mosaic!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
@@ -224,7 +231,7 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def sithlord(self, ctx, member: discord.Member = None):
-        """Setze ein Mitglied auf das Meme "Lacht in Sith Lord"!"""
+        """Put a member on the meme "Laughs in Sith Lord"!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
@@ -240,7 +247,7 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def jail(self, ctx, member: discord.Member = None):
-        """Bring das Mitglied hinter Gitter!"""
+        """Put that member behind bars!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
@@ -256,12 +263,11 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def trash(self, ctx, member: discord.Member = None):
-        """Das Mitglied ist Müll!"""
+        """The member is trash!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
-                    embed = discord.Embed(title="❌ Fehler",
-                                          description="```fix\nDu musst ein Mitglied angeben!```",
+                    embed = discord.Embed(title="❌ Error", description="```fix\nYou must specify a member!```",
                                           color=ecolor)
                     await ctx.send(embed=embed)
                     return
@@ -276,7 +282,7 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def sepia(self, ctx, member: discord.Member = None):
-        """Sepia Tone ein Mitglied!"""
+        """Sepia Tone a member!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
@@ -292,7 +298,7 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def swirl(self, ctx, member: discord.Member = None):
-        """Verwische ein Mitglied!"""
+        """Swirl a member!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
@@ -308,7 +314,7 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def paint(self, ctx, member: discord.Member = None):
-        """Verwandle ein Mitglied in Kunst!"""
+        """Turn a member into art!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
@@ -324,7 +330,7 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def magik(self, ctx, member: discord.Member = None):
-        """Der beliebte magische Endpunkt!"""
+        """The popular magic ending!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
@@ -340,7 +346,7 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def obama(self, ctx, member: discord.Member = None):
-        """Das Meme schlecht hin!"""
+        """The classic meme!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
@@ -356,17 +362,16 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def tweet(self, ctx, member: discord.Member = None, *, message=None):
-        """Generiere einen realistischen Tweet!"""
+        """Generate a realistic tweet!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
-                    embed = discord.Embed(title="❌ Fehler",
-                                          description="```fix\nDu musst ein gültiges Mitglied angeben!```",
+                    embed = discord.Embed(title="❌ Error", description="```fix\nYou must specify a valid member!```",
                                           color=ecolor)
                     await ctx.send(embed=embed)
                     return
                 if message is None:
-                    embed = discord.Embed(title="❌ Fehler", description="```fix\nDu musst eine Nachricht angeben!```",
+                    embed = discord.Embed(title="❌ Error", description="```fix\nYou have to enter a message!```",
                                           color=ecolor)
                     await ctx.send(embed=embed)
                     return
@@ -381,17 +386,16 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def youtube(self, ctx, member: discord.Member = None, *, message=None):
-        """Generiere eine realistische YouTube-Nachricht!"""
+        """Generate a realistic YouTube message!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
-                    embed = discord.Embed(title="❌ Fehler",
-                                          description="```fix\nDu musst ein gültiges Mitglied angeben!```",
+                    embed = discord.Embed(title="❌ Error", description="```fix\nYou must specify a valid member!```",
                                           color=ecolor)
                     await ctx.send(embed=embed)
                     return
                 if message is None:
-                    embed = discord.Embed(title="❌ Fehler", description="```fix\nDu musst eine Nachricht angeben!```",
+                    embed = discord.Embed(title="❌ Error", description="```fix\nYou have to enter a message!```",
                                           color=ecolor)
                     await ctx.send(embed=embed)
                     return
@@ -407,17 +411,16 @@ class Bilder(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def discord(self, ctx, member: discord.Member = None, *, message=None):
-        """Generiere eine realistische Discord-Nachricht!"""
+        """Generate a realistic Discord message!"""
         if ctx.author.bot is False:
             async with ctx.typing():
                 if member is None:
-                    embed = discord.Embed(title="❌ Fehler",
-                                          description="```fix\nDu musst ein gültiges Mitglied angeben!```",
+                    embed = discord.Embed(title="❌ Error", description="```fix\nYou must specify a valid member!```",
                                           color=ecolor)
                     await ctx.send(embed=embed)
                     return
                 if message is None:
-                    embed = discord.Embed(title="❌ Fehler", description="```fix\nDu musst eine Nachricht angeben!```",
+                    embed = discord.Embed(title="❌ Error", description="```fix\nYou have to enter a message!```",
                                           color=ecolor)
                     await ctx.send(embed=embed)
                     return
@@ -432,4 +435,4 @@ class Bilder(commands.Cog):
 
 ########################################################################################################################
 def setup(client):
-    client.add_cog(Bilder(client))
+    client.add_cog(Images(client))

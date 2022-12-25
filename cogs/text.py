@@ -1,12 +1,12 @@
 import discord
-from discord.ext import commands
+from nextcord.ext import commands
 from pyfiglet import figlet_format
 
 ecolor = discord.Color.dark_red()
 
 
 class Text(commands.Cog):
-    """Werte deine Texte cool auf!"""
+    """Add cool value to your messages!"""
 
     def __init__(self, client):
         self.client = client
@@ -15,17 +15,17 @@ class Text(commands.Cog):
     @commands.command(aliases=["upside", "ud"])
     @commands.guild_only()
     async def upsidedown(self, ctx, message=None):
-        """Stellt eine Nachricht auf den Kopf!"""
+        """Turn a message upside down!"""
         if ctx.author.bot is False:
             if message is None:
-                embed = discord.Embed(title="❌ Fehler", description="```fix\nDu musst eine Nachricht angeben!```",
+                embed = discord.Embed(title="❌ Error", description="```fix\nYou have to enter a message!```",
                                       color=ecolor)
                 await ctx.send(embed=embed)
                 return
             letters = {"?": "¿", "!": "¡", "z": "z", "y": "ʎ", "x": "x", "w": "ʍ", "v": "ʌ", "u": "n", "t": "ʇ",
                        "s": "s", "r": "ɹ", "q": "b", "p": "d", "o": "o", "n": "u", "m": "ɯ", "l": "l", "k": "ʞ",
-                       "j": "ɾ",
-                       "i": "ı", "h": "ɥ", "g": "ɓ", "f": "ɟ", "e": "ǝ", "d": "p", "c": "ɔ", "b": "q", "a": "ɐ"}
+                       "j": "ɾ", "i": "ı", "h": "ɥ", "g": "ɓ", "f": "ɟ", "e": "ǝ", "d": "p", "c": "ɔ", "b": "q",
+                       "a": "ɐ"}
             message = message.lower()
             NewMessage = []
             for letter in message:
@@ -39,10 +39,10 @@ class Text(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def sparkle(self, ctx, message=None):
-        """Fügt einer Nachricht Glitzer hinzu!"""
+        """Add glitter to a message!"""
         if ctx.author.bot is False:
             if message is None:
-                embed = discord.Embed(title="❌ Fehler", description="```fix\nDu musst eine Nachricht angeben!```",
+                embed = discord.Embed(title="❌ Error", description="```fix\nYou have to enter a message!```",
                                       color=ecolor)
                 await ctx.send(embed=embed)
                 return
@@ -63,17 +63,16 @@ class Text(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def fancy(self, ctx, message=None):
-        """Macht eine Nachricht schick!"""
+        """Makes a message fancy!"""
         if ctx.author.bot is False:
             if message is None:
-                embed = discord.Embed(title="❌ Fehler", description="```fix\nDu musst eine Nachricht angeben!```",
+                embed = discord.Embed(title="❌ Error", description="```fix\nYou have to enter a message!```",
                                       color=ecolor)
                 await ctx.send(embed=embed)
                 return
             letters = {"z": "𝓏", "y": "𝓎", "x": "𝓍", "w": "𝓌", "v": "𝓋", "u": "𝓊", "t": "𝓉", "s": "𝓈", "r": "𝓇",
                        "q": "𝓆", "p": "𝓅", "o": "𝑜", "n": "𝓃", "m": "𝓂", "l": "𝓁", "k": "𝓀", "j": "𝒿", "i": "𝒾",
-                       "h": "𝒽",
-                       "g": "𝑔", "f": "𝒻", "e": "𝑒", "d": "𝒹", "c": "𝒸", "b": "𝒷", "a": "𝒶"}
+                       "h": "𝒽", "g": "𝑔", "f": "𝒻", "e": "𝑒", "d": "𝒹", "c": "𝒸", "b": "𝒷", "a": "𝒶"}
             message = message.lower()
             NewMessage = ""
             for letter in message:
@@ -87,10 +86,10 @@ class Text(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def reverse(self, ctx, message=None):
-        """Schreibt die Nachricht rückwärts!"""
+        """Write the message backwards!"""
         if ctx.author.bot is False:
             if message is None:
-                embed = discord.Embed(title="❌ Fehler", description="```fix\nDu musst eine Nachricht angeben!```",
+                embed = discord.Embed(title="❌ Error", description="```fix\nYou have to enter a message!```",
                                       color=ecolor)
                 await ctx.send(embed=embed)
                 return
@@ -101,10 +100,10 @@ class Text(commands.Cog):
     @commands.command()
     @commands.guild_only()
     async def big(self, ctx, message=None):
-        """Schreibt die Nachricht groß!"""
+        """Write the message big!"""
         if not ctx.author.bot:
             if message is None:
-                embed = discord.Embed(title="❌ Fehler", description="```fix\nDu musst eine Nachricht angeben!```",
+                embed = discord.Embed(title="❌ Fehler", description="```fix\nYou have to enter a message!```",
                                       color=ecolor)
                 await ctx.send(embed=embed)
                 return

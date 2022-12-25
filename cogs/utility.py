@@ -4,14 +4,14 @@ from string import digits
 from string import punctuation
 
 import discord
-from discord.ext import commands
+from nextcord.ext import commands
 
 bc = 0xa2aac2
 ecolor = discord.Color.dark_red()
 
 
-class Allgemein(commands.Cog):
-    """Standard Befehle für jeden!"""
+class General(commands.Cog):
+    """Standard commands for everyone!"""
 
     def __init__(self, client):
         self.client = client
@@ -20,7 +20,7 @@ class Allgemein(commands.Cog):
     @commands.command(aliases=["a"])
     @commands.guild_only()
     async def avatar(self, ctx, member: discord.Member = None):
-        """Erhalte das Mitglieder-Avatar!"""
+        """Get the member avatar!"""
         if ctx.author.bot is False:
             if member is None:
                 member = ctx.author
@@ -43,26 +43,26 @@ class Allgemein(commands.Cog):
     @commands.guild_only()
     @commands.has_permissions(manage_messages=True)
     async def poll(self, ctx, channel: discord.TextChannel = None, message=None):
-        """Erstelle eine kurze Umfrage!"""
+        """Create a short survey!"""
         if ctx.author.bot is False:
             if channel is None:
-                embed = discord.Embed(title="❌ Fehler",
-                                      description="```fix\nDu musst einen Kanal angeben!```",
+                embed = discord.Embed(title="❌ Error",
+                                      description="```fix\nYou must specify a channel!```",
                                       color=ecolor)
                 await ctx.send(embed=embed)
                 return
             if message is None:
-                embed = discord.Embed(title="❌ Fehler",
-                                      description="```fix\nDu musst eine Frage angeben!```",
+                embed = discord.Embed(title="❌ Error",
+                                      description="```fix\nYou have to enter a question!```",
                                       color=ecolor)
                 await ctx.send(embed=embed)
                 return
-            embed = discord.Embed(title="Erledigt", colour=bc)
+            embed = discord.Embed(title="Done", colour=bc)
             await ctx.send(embed=embed)
             sender = ctx.author.name
-            embed = discord.Embed(title="📊 Umfrage", colour=0xa2aac2)
-            embed.add_field(name="Frage", value=message, inline=False)
-            embed.set_footer(text=f"Umfrage von {sender}")
+            embed = discord.Embed(title="📊 Survey", colour=0xa2aac2)
+            embed.add_field(name="Question", value=message, inline=False)
+            embed.set_footer(text=f"Survey by {sender}")
             msg = await channel.send(embed=embed)
             await msg.add_reaction("👍")
             await msg.add_reaction("👎")
@@ -71,11 +71,11 @@ class Allgemein(commands.Cog):
     @commands.command(aliases=["pw"])
     @commands.guild_only()
     async def password(self, ctx, length: int = None):
-        """Generiere dir ein Passwort per DM!"""
+        """Generate a password via DM!"""
         if ctx.author.bot is False:
             if length is None:
-                embed = discord.Embed(title="❌ Fehler",
-                                      description="```fix\nDu musst eine Zeichenlänge angeben!```",
+                embed = discord.Embed(title="❌ Error",
+                                      description="```fix\nYou must specify a character length!```",
                                       color=ecolor)
                 await ctx.send(embed=embed)
                 return
@@ -83,18 +83,18 @@ class Allgemein(commands.Cog):
             symbol = ascii_letters + digits + punctuation
             secure_random = random.SystemRandom()
             if length <= 7:
-                embed = discord.Embed(title="❌ Dieses Passwort ist nicht sicher.\nNimm lieber eins mit 8 Buchstaben!",
+                embed = discord.Embed(title="❌ This password is not secure.\nBetter take one with 8 letters!",
                                       colour=ecolor)
                 await ctx.send(embed=embed)
             else:
                 for i in range(length):
                     password += "".join(secure_random.choice(symbol))
-                embed = discord.Embed(color=bc, title="Sicheres Passwort", description=f"`{password}`")
+                embed = discord.Embed(color=bc, title="Secure password", description=f"`{password}`")
                 await ctx.author.send(embed=embed)
-                embed = discord.Embed(title="Überprüfe deine DMs :)", colour=bc)
+                embed = discord.Embed(title="Check your DMs :)", colour=bc)
                 await ctx.send(embed=embed)
 
 
 ########################################################################################################################
 def setup(client):
-    client.add_cog(Allgemein(client))
+    client.add_cog(General(client))
