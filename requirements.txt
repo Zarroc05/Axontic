@@ -1,0 +1,6 @@
+git+https://github.com/nextcord/nextcord.git
+nextcord-pretty-help
+pyfiglet
+humanfriendly
+asyncdagpi
+cowpy
