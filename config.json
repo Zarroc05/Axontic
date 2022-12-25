@@ -1,7 +1,7 @@
 {
   "botConfig": [
     {
-      "token": "ENTER TOKEN HERE",
+      "token": "ENTER TOKEN HERE!",
       "prefix": "-"
     }
   ]
