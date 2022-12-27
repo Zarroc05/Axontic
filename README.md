@@ -28,7 +28,7 @@ You can also change your prefix for the bot there.
 ```json  
 "prefix": "-"  
 ```  
-You can also personalize the status.  
+You can also personalize the status in the main.py. 
 ```python  
 await client.change_presence(activity=discord.Game(name='with Discord!'), status=discord.Status.do_not_disturb)  
 ```  
