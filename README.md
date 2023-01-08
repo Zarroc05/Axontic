@@ -42,7 +42,7 @@ python3 main.py
 In case of error, please open an issue.
 
 If you have any questions, feel free to come to my Discord server.  
-[https://discord.gg/FCvBJ5dcD8](https://discord.gg/FCvBJ5dcD8)  
+[https://discord.gg/DypJbNXWMx](https://discord.gg/DypJbNXWMx)  
   
 ## 🔭 | License  
   
