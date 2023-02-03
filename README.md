@@ -1,7 +1,7 @@
 
   
 <p align="center">  
-  <img src="https://cdn.discordapp.com/attachments/1056605556833521796/1056624933914022028/Axontic.png">  
+  <img src="https://cdn.discordapp.com/attachments/795703051427643404/1071102275512172596/Axontic.png">  
 </p>  
   
 <p style="text-align: center">
